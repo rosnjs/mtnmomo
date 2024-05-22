@@ -14,7 +14,7 @@
 ],
   "authors": [
       {
-          "name": "Rosty Bankia",
+          "name": "RosnJS",
           "email": "code@ros.cg"
       }
   ],
@@ -22,7 +22,7 @@
   "require": {
     "php": "^7.3|^8.0",
     "ext-json": "*",
-    "Nzokolab/oauth-negotiator": "^2.0",
+    "bmatovu/oauth-negotiator": "^2.0",
     "guzzlehttp/guzzle": "^7.5",
     "illuminate/console": "^8.0|^9.0|^10.0",
     "illuminate/container": "^8.0|^9.0|^10.0",

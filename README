@@ -1,18 +1,18 @@
 ### Introduction
 
-This package helps you integrate the [MTN MOMO API](https://momodeveloper.mtn.com) into your Laravel application. It provides a wrapper around the core MTN MOMO API services, leaving you to worry about other parts of your application.
+This package facilitates the integration of the [MTN MOMO API](https://momodeveloper.mtn.com) into your Laravel application. It offers a convenient wrapper around the core MTN MOMO API services, freeing you to focus on other aspects of your application.
 
-### [Installation](https://packagist.org/packages/nzokolab/mtnmomo)
+### Installation
 
-To get started, install the package via the Composer package manager:
+To begin, install the package via Composer:
 
-| Laravel      | Package | Installation                                      |
-| :----------: | :-----: | ------------------------------------------------- |
-| ^8.0 ... ^10.0 | master  | `composer require nzokolab/mtnmomo`       |
+```bash
+composer require nzokolab/mtnmomo
+```
 
-**Configuration customization**
+**Custom Configuration**
 
-If you wish to customize the default configurations, you may export the default configuration using
+If you wish to customize the default configurations, export the default configuration using:
 
 ```bash
 php artisan vendor:publish --provider="Nzokolab\MtnMomo\MtnMomoServiceProvider" --tag="config"
@@ -20,7 +20,7 @@ php artisan vendor:publish --provider="Nzokolab\MtnMomo\MtnMomoServiceProvider" 
 
 **Database Migration**
 
-The package service provider registers it's own database migrations with the framework, so you should migrate your database after installation. The migration will create a tokens tables your application needs to store access tokens from MTN MOMO API.
+The package service provider registers its own database migrations with the framework. Therefore, after installation, migrate your database:
 
 ```bash
 php artisan migrate
@@ -28,34 +28,34 @@ php artisan migrate
 
 ### Prerequisites
 
-You will need the following to get started with you integration...
+Before integrating, ensure you have the following:
 
 1. Create a [**developer account**](https://momodeveloper.mtn.com/signup) with MTN MOMO.
-2. Subscribe to a [**product/service**](https://momodeveloper.mtn.com/products) that you wish to consume.
+2. Subscribe to a [**product/service**](https://momodeveloper.mtn.com/products) you intend to consume.
 
-If you already subscribed to a product, the subscription key can be found in your [**profile**](https://momodeveloper.mtn.com/developer).
+If you've already subscribed to a product, find the subscription key in your [**profile**](https://momodeveloper.mtn.com/developer).
 
-### Getting started (Sandbox)
+### Getting Started (Sandbox)
 
-Register your client details.
+Register your client details:
 
 ```bash
 php artisan mtn-momo:init
 ```
 
-Next you need to register your client app ID.
+Next, register your client app ID:
 
 ```bash
 php artisan mtn-momo:register-id
 ```
 
-You may want to verify your client ID at this stage
+Optionally, you can verify your client ID:
 
 ```bash
 php artisan mtn-momo:validate-id
 ```
 
-Then request for a client secret (key).
+Then, request a client secret (key):
 
 ```bash
 php artisan mtn-momo:request-secret
@@ -73,7 +73,7 @@ $referenceId = $collection->requestToPay('yourTransactionId', '46733123454', 100
 
 See [test numbers](https://momodeveloper.mtn.com/api-documentation/testing/#test-numbers)
 
-**Exception handling**
+**Exception Handling**
 
 ```php
 use Nzokolab\MtnMomo\Products\Collection;
@@ -91,137 +91,65 @@ try {
 }
 ```
 
-### [Available methods](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products.html)
+### [Available Methods](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products.html)
 
 **Collection**
 
-1. [Collect money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_requestToPay)
+1. [Collect Money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_requestToPay)
 
-    ```php
-    $collection->requestToPay($yourTransactionId, $partyId, $amount)
-    ```
+2. [Check Transaction Status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_getTransactionStatus)
 
-2. [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_getTransactionStatus)
+3. [Check Account Balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_getAccountBalance)
 
-    ```php
-    $collection->getTransactionStatus($referenceId)
-    ```
+4. [Check Account Status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_isActive)
 
-3. [Check account balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_getAccountBalance)
-
-    ```php
-    $collection->getAccountBalance()
-    ```
-
-4. [Check account status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_isActive)
-
-    ```php
-    $collection->isActive($partyId)
-    ```
-
-5. [Get OAuth token](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_getToken)
-
-    ```php
-    $collection->getToken()
-    ```
+5. [Get OAuth Token](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_getToken)
 
 6. [Get Account Holder Info](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_getAccountHolderBasicInfo)
-
-    ```php
-    $collection->getAccountHolderBasicInfo($partyId)
-    ```
 
 **Disbursement**
 
-1. [Disburse money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Disbursement.html#method_transfer)
+1. [Disburse Money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Disbursement.html#method_transfer)
 
-    ```php
-    $disbursement->transfer($yourTransactionId, $partyId, $amount)
-    ```
+2. [Check Transaction Status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Disbursement.html#method_getTransactionStatus)
 
-2. [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Disbursement.html#method_getTransactionStatus)
+3. [Check Account Balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Disbursement.html#method_getAccountBalance)
 
-    ```php
-    $disbursement->getTransactionStatus($referenceId)
-    ```
+4. [Check Account Status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Disbursement.html#method_isActive)
 
-3. [Check account balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Disbursement.html#method_getAccountBalance)
-
-    ```php
-    $disbursement->getAccountBalance()
-    ```
-
-4. [Check account status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Disbursement.html#method_isActive)
-
-    ```php
-    $disbursement->isActive($partyId)
-    ```
-
-5. [Get OAuth token](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Disbursement.html#method_getToken)
-
-    ```php
-    $disbursement->getToken()
-    ```
+5. [Get OAuth Token](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Disbursement.html#method_getToken)
 
 6. [Get Account Holder Info](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_getAccountHolderBasicInfo)
-
-    ```php
-    $disbursement->getAccountHolderBasicInfo($partyId)
-    ```
-    
 
 **Remittance**
 
-1. [Remit money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Remittance.html#method_transact)
+1. [Remit Money](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/M
 
-    ```php
-    $remittance->transfer($yourTransactionId, $partyId, $amount)
-    ```
+tnMomo/Products/Remittance.html#method_transact)
 
-2. [Check transaction status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Remittance.html#method_getTransactionStatus)
+2. [Check Transaction Status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Remittance.html#method_getTransactionStatus)
 
-    ```php
-    $remittance->getTransactionStatus($referenceId)
-    ```
+3. [Check Account Balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Remittance.html#method_getAccountBalance)
 
-3. [Check account balance](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Remittance.html#method_getAccountBalance)
+4. [Check Account Status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Remittance.html#method_isActive)
 
-    ```php
-    $remittance->getAccountBalance()
-    ```
-
-4. [Check account status](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Remittance.html#method_isActive)
-
-    ```php
-    $remittance->isActive($partyId)
-    ```
-
-5. [Get OAuth token](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Remittance.html#method_getToken)
-
-    ```php
-    $remittance->getToken()
-    ```
+5. [Get OAuth Token](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Remittance.html#method_getToken)
 
 6. [Get Account Holder Info](https://mtvbrianking.github.io/laravel-mtn-momo/master/Nzokolab/MtnMomo/Products/Collection.html#method_getAccountHolderBasicInfo)
 
-    ```php
-    $remittance->getAccountHolderBasicInfo($partyId)
-    ```
-    
-### Go live
+### Go Live
 
-You will need to make some changes to your setup before going live. [Read more](https://github.com/mtvbrianking/laravel-mtn-momo/wiki/Go-Live).
+Make necessary changes to your setup before going live. [Read more](https://github.com/mtvbrianking/laravel-mtn-momo/wiki/Go-Live).
 
 ### Support Groups
 
 Join MTN's Skype & WhatsApp support groups. [Here](https://momodeveloper.mtn.com/contact-support)
 
-### Reporting bugs
+### Reporting Bugs
 
-If you've stumbled across a bug, please help us by leaving as much information about the bug as possible, e.g.
+If you encounter a bug, provide as much information as possible:
 - Steps to reproduce
 - Expected result
 - Actual result
 
-This will help us to fix the bug as quickly as possible, and if you wish to fix it yourself feel free to [fork the package](https://github.com/rosnjs/mtnmomo) and submit a pull request!
-
+This helps us fix the bug quickly. If you wish to fix it yourself, feel free to [fork the package](https://github.com/rosnjs/mtnmomo) and submit a pull request!

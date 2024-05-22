@@ -2,6 +2,7 @@
   "name": "nzokolab/mtnmomo",
   "description": "This package helps you integrate the MTN MOMO API into your Laravel application. It provides a wrapper around the core MTN MOMO API services, leaving you to worry about other parts of your application.",
   "license": "MIT",
+  "version": "0.0.1",
   "homepage": "https://github.com/nzokolab/laravel-mtnmomo",
   "type": "library",
   "keywords": [
@@ -22,7 +23,7 @@
   "require": {
     "php": "^7.3|^8.0",
     "ext-json": "*",
-    "Nzokolab/oauth-negotiator": "^2.0",
+    "bmatovu/oauth-negotiator": "^2.0",
     "guzzlehttp/guzzle": "^7.5",
     "illuminate/console": "^8.0|^9.0|^10.0",
     "illuminate/container": "^8.0|^9.0|^10.0",
